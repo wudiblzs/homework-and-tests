@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lv2</title>
+</head>
+
+<body>
+
+    <div align="center">
+        <b>请选择您的爱好</b>
+        <br />
+    </div>
+
+    <div id="divlist" align="center">
+        <input type="checkbox" value="内卷">内卷
+        <input type="checkbox" value="疯狂内卷">疯狂内卷
+        <input type="checkbox" value="拼命内卷">拼命内卷
+        <input type="checkbox" value="使劲内卷">使劲内卷
+        <br />
+        <!-- <input type="button" value="全选">
+        <input type="button" value="全不选">
+        <input type="button" value="反选"> -->
+        <button onclick="allChecked()">全选</button>
+        <button onclick="noChecked()">全不选</button>
+        <button onclick="invertSelection()">反选</button>
+    </div>
+
+    <script>
+        var cb = [];
+        
+        for (var i = 0; i < document.querySelectorAll('input').length; i++){
+            cb[i] = document.querySelectorAll('input')[i];
+        }
+        
+        function allChecked() {
+            for (var round = 0; round < cb.length; round++){
+                cb[round].checked = true;
+            }
+        }
+        function noChecked() {
+            for (var round = 0; round < cb.length; round++){
+                cb[round].checked = false;
+            }
+        }
+        function invertSelection() {
+            for (var round = 0; round < cb.length; round++){
+                cb[round].checked = !cb[round].checked;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
