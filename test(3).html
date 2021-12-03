@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes move {
+            /* 开始状态 */
+            0% {
+                transform: translateX(0px);
+            }
+            /* 结束状态 */
+            100% {
+                transform: translateX(1000px);
+            }
+        }
+        #circle-1 {
+            width: 150px;
+            height: 150px;
+            background-color: rgb(123, 184, 235);
+            border-radius: 50%;
+            animation-name: move;
+            /* 运动时间 */
+            animation-duration: 2s;
+            /* 终止位置 */
+            animation-fill-mode: forwards;
+        }
+        #circle-2 {
+            width: 150px;
+            height: 150px;
+            background-color: rgb(238, 153, 74);
+            border-radius: 50%;
+            /* animation-name: move; */
+            /* 运动时间 */
+            animation-duration: 2s;
+            /* 终止位置 */
+            animation-fill-mode: forwards;
+        }
+        #circle-3 {
+            width: 150px;
+            height: 150px;
+            background-color: rgb(73, 80, 87);
+            border-radius: 50%;
+            /* animation-name: move; */
+            /* 运动时间 */
+            animation-duration: 2s;
+            /* 终止位置 */
+            animation-fill-mode: forwards;
+        }
+    </style>
+</head>
+<body>
+    <div id="circle-1"></div>
+    <div id="circle-2"></div>
+    <div id="circle-3"></div>
+
+    <script>
+        let c1 = document.getElementById('circle-1');
+        let c2 = document.getElementById('circle-2');
+        let c3 = document.getElementById('circle-3');
+        
+        async function startMove() {
+            await op1();
+            await op2();
+            resolve();
+        };
+        
+        startMove();
+        
+        function op1() {
+            setTimeout(() => {
+                c2.style.animationName = 'move';
+                resolve();
+            }, 2000);
+        };
+        function op2() {
+            setTimeout(() => {
+                c3.style.animationName = 'move';
+                resolve();
+            }, 4000);
+        };
+    </script>
+</body>
+</html>
