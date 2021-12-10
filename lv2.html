@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    用户名:<input type="text" name="username" id="usern" value=""><br>
+    密码:<input type="text" name="passwrod" id="passw" value=""><br>
+    <input type="button" value="登录" id="btn" onclick="op()">
+
+
+
+    <script>
+
+        function op() {
+
+
+            const data = {
+                username: usern.value,
+                password: passw.value,
+            };
+            usern.value = '';
+            passw.value = '';
+
+            fetch('https://anonym.ink:8000/homework/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then((response) => {
+                return response.text();
+            }).then((res) => {
+                console.log(res);
+            })
+        }
+    </script>
+</body>
+
+</html>

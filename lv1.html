@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="form_elem">
+        <input type="text" id="text" name="message" >
+        <input type="button" id="btn" value = "点击">
+    </form>
+
+    <div id="show"></div>
+
+    <script>
+
+        let form_data = document.getElementById('form_elem');
+        let btnn = document.getElementById('btn');
+        let show_place = document.getElementById('show');
+        btnn.addEventListener('click', function () {
+            let form_elem = document.getElementById('form_elem');
+            let oform = new FormData(form_elem);
+            let text = document.getElementById('text');
+
+            // 发送
+            oform.append('message', text.value);
+            text.value = '';
+
+            fetch('https://anonym.ink:8000/homework/fufubot_test/', {
+                method: 'POST',
+                body: oform
+            }).then((response) => {
+                return response.text();
+            }).then((res) => {
+                // 显示返回内容
+                // show_place.innerHTML = res;
+                console.log(res);
+            })
+        });
+        
+
+        
+
+    </script>
+</body>
+
+</html>
